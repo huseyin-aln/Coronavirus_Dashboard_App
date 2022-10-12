@@ -1,24 +1,31 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 
-function Cards(state) {
-  // const totalDeaths = state.reduce((sum, item) => (sum += item.deaths), 0);
-  // const totalConfirmed = state.reduce(
-  //   (sum, item) => (sum += item.confirmed),
-  //   0
-  // );
+
+function Cards({ state }) {
+  // console.log(state);
+  const navigate = useNavigate()
+
+  const totalDeaths = state.reduce((sum, item) => (sum += item.deaths), 0);
+  const totalConfirmed = state.reduce(
+    (sum, item) => (sum += item.confirmed),
+    0
+  );
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <div className="d-flex justify-content-center m-5">
+      <Card className="text-center" style={{ width: "80%" }}>
+        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Body>
+          <Card.Title className="fs-1 text-danger">Country : {state[0].country}</Card.Title>
+          <Card.Text>Total Confirmed : <span className="text-danger">
+          {totalConfirmed}</span></Card.Text>
+          <Card.Text>Total Deaths : <span className="text-danger">{totalDeaths}</span></Card.Text>
+          <Card.Text>Last Updated : <span className="text-danger">{state[0].lastUpdate}</span></Card.Text>
+          <Button variant="success" onClick={() => navigate("/")}>Go somewhere</Button>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 

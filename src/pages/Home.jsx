@@ -14,7 +14,8 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  const API_KEY = "54ad24b710msha07c95426304036p1a62c0jsn814ebff60375";
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const url = `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats/?rapidapi-key=${API_KEY}#downloadJSON=true`;
 
   const getCovidData = async () => {

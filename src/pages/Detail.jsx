@@ -6,13 +6,13 @@ import Cards from "../components/Cards";
 const Detail = () => {
   const { state } = useLocation();
 
-  console.log(state);
+  // console.log(state);
 
-  const totalDeaths = state.reduce((sum, item) => (sum += item.deaths), 0);
-  const totalConfirmed = state.reduce(
-    (sum, item) => (sum += item.confirmed),
-    0
-  );
+  // const totalDeaths = state.reduce((sum, item) => (sum += item.deaths), 0);
+  // const totalConfirmed = state.reduce(
+  //   (sum, item) => (sum += item.confirmed),
+  //   0
+  // );
   // console.log(totalDeaths)
   // console.log(totalConfirmed)
 
@@ -21,9 +21,10 @@ const Detail = () => {
   return (
     <div>
       <Cards state={state} />
-      <h1>{state[0].country}</h1>
+      {/* <h1>{state[0].country}</h1>
       <h1>{totalConfirmed}</h1>
       <h1>{totalDeaths}</h1>
+      <h1>{state[0].lastUpdate}</h1> */}
     </div>
   );
 };
