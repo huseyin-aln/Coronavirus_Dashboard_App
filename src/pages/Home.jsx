@@ -5,6 +5,7 @@ import "react-svg-map/lib/index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import loadingGif from "../assets/loading.gif";
 import Header from "../components/Header";
 
 const Home = () => {
@@ -21,7 +22,6 @@ const Home = () => {
   const getCovidData = async () => {
     setLoading(true);
     try {
-      setLoading(false);
       const { data } = await axios.get(url);
       setCovid(data.data.covid19Stats);
       setLoading(false);
@@ -55,14 +55,21 @@ const Home = () => {
   };
   return (
     <>
-      <Header setCountry={setCountry} getCovidData={getCovidData}/>
-      <SVGMap
-        map={world}
-        onLocationClick={(e) => {
-          console.log(e.target.getAttribute("name"));
-          handleClick(e.target.getAttribute("name"));
-        }}
-      />
+      <Header setCountry={setCountry} getCovidData={getCovidData} />
+      {loading && (
+        <div>
+          <img src={loadingGif} alt="gif" width="90%" height="800px" />
+        </div>
+      )}
+      {!loading && (
+        <SVGMap
+          map={world}
+          onLocationClick={(e) => {
+            console.log(e.target.getAttribute("name"));
+            handleClick(e.target.getAttribute("name"));
+          }}
+        />
+      )}
     </>
   );
 };
