@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "react-svg-map/lib/index.css";
+import Cards from "../components/Cards";
 
 const Detail = () => {
   const { state } = useLocation();
@@ -19,6 +20,7 @@ const Detail = () => {
 
   return (
     <div>
+      <Cards state={state} />
       <h1>{state[0].country}</h1>
       <h1>{totalConfirmed}</h1>
       <h1>{totalDeaths}</h1>

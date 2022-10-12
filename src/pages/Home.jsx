@@ -5,6 +5,7 @@ import "react-svg-map/lib/index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Header from "../components/Header";
 
 const Home = () => {
   const [covid, setCovid] = useState([]);
@@ -13,21 +14,22 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const API_KEY = "54ad24b710msha07c95426304036p1a62c0jsn814ebff60375";
+  const url = `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats/?rapidapi-key=${API_KEY}#downloadJSON=true`;
+
   const getCovidData = async () => {
     setLoading(true);
     try {
       setLoading(false);
-      const url =
-        "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats/?rapidapi-key=54ad24b710msha07c95426304036p1a62c0jsn814ebff60375#downloadJSON=true";
       const { data } = await axios.get(url);
-      setLoading(false);
       setCovid(data.data.covid19Stats);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(covid);
+  // console.log(covid);
 
   useEffect(() => {
     getCovidData();
@@ -51,13 +53,16 @@ const Home = () => {
     navigate("/detail", { state: CountryDetail });
   };
   return (
-    <SVGMap
-      map={world}
-      onLocationClick={(e) => {
-        console.log(e.target.getAttribute("name"));
-        handleClick(e.target.getAttribute("name"));
-      }}
-    />
+    <>
+      <Header setCountry={setCountry} getCovidData={getCovidData}/>
+      <SVGMap
+        map={world}
+        onLocationClick={(e) => {
+          console.log(e.target.getAttribute("name"));
+          handleClick(e.target.getAttribute("name"));
+        }}
+      />
+    </>
   );
 };
 

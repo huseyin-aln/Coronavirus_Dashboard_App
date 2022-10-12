@@ -14,24 +14,24 @@ function NavbarTop() {
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto d-flex justify-content-end">
+          <Nav className="ms-auto">
             <Link to="/" className="nav-link active cursor-pointer">
               Home
             </Link>
             <Link to="detail" className="nav-link active cursor-pointer">
-              Detail{" "}
-            </Link>{" "}
-            <form className="d-flex" role="search">
+              Detail
+            </Link>
+            {/* <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
-              />{" "}
+              />
               <button className="btn btn-outline-success" type="submit">
                 Search
-              </button>{" "}
-            </form>
+              </button>
+            </form> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
