@@ -1,7 +1,7 @@
 import React from "react";
 import world from "@svg-maps/world";
 import { SVGMap } from "react-svg-map";
-import "react-svg-map/lib/index.css";
+// import "react-svg-map/lib/index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -36,39 +36,44 @@ const Home = () => {
     getCovidData();
   }, []);
 
-  const handleClick = (e) => {
+  const handleClick = (country) => {
     let CountryDetail;
-    if (e === "United States") {
+    if (country === "United States") {
       CountryDetail = covid.filter((item) => item.country === "US");
     } else {
-      CountryDetail = covid.filter((item) => item.country === e);
+      CountryDetail = covid.filter((item) => item.country === country);
     }
     if (CountryDetail.length === 0) {
       CountryDetail.push({
-        country: "Unknown Country",
+        country: "The Country Can Not Be Found!",
         deaths: 0,
         confirmed: 0,
       });
     }
-    setCountry(e);
+    setCountry(country);
     navigate("/detail", { state: CountryDetail });
   };
   return (
     <>
       <Header setCountry={setCountry} getCovidData={getCovidData} />
       {loading && (
-        <div>
-          <img src={loadingGif} alt="gif" width="90%" height="800px" />
+        <div className="d-flex flex-column justify-content-center">
+          <img src={loadingGif} alt="gif" width="90%" height="400px" />
+          <h1 className="text-center">Loading...</h1>
         </div>
       )}
       {!loading && (
-        <SVGMap
-          map={world}
-          onLocationClick={(e) => {
-            console.log(e.target.getAttribute("name"));
-            handleClick(e.target.getAttribute("name"));
-          }}
-        />
+        <>
+          <SVGMap
+            className="map"
+            locationClassName="location"
+            map={world}
+            onLocationClick={(e) => {
+              // console.log(e.target.getAttribute("name"));
+              handleClick(e.target.getAttribute("name"));
+            }}
+          />
+        </>
       )}
     </>
   );

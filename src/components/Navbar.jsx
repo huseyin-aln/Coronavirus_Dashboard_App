@@ -9,7 +9,7 @@ function NavbarTop() {
       <Container>
         <Link to="/" className="nav-link active cursor-pointer d-flex gap-3">
           <i className="text-white">{"<h-aln>"}</i>
-          <span className="text-success">Coronavirus Dahsboard</span>
+          <span className="text-success">Coronavirus Site</span>
         </Link>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
