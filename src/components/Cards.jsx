@@ -22,7 +22,7 @@ function Cards({ state }) {
           {totalConfirmed}</span></Card.Text>
           <Card.Text>Total Deaths : <span className="text-danger">{totalDeaths}</span></Card.Text>
           <Card.Text>Last Updated : <span className="text-danger">{state[0].lastUpdate}</span></Card.Text>
-          <Button variant="success" onClick={() => navigate("/")}>Go somewhere</Button>
+          <Button variant="success" onClick={() => navigate("/")}>Go Back</Button>
         </Card.Body>
       </Card>
     </div>

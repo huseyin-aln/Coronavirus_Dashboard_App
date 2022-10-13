@@ -21,7 +21,7 @@ function NavbarTop() {
             <Link to="detail" className="nav-link active cursor-pointer">
               Detail
             </Link>
-            {/* <form className="d-flex" role="search">
+            <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
                 type="search"
@@ -31,7 +31,7 @@ function NavbarTop() {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
-            </form> */}
+            </form>
           </Nav>
         </Navbar.Collapse>
       </Container>

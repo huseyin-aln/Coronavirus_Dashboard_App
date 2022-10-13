@@ -1,8 +1,6 @@
 import React from "react";
 import world from "@svg-maps/world";
 import { SVGMap } from "react-svg-map";
-// import "react-svg-map/lib/index.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import loadingGif from "../assets/loading.gif";
@@ -47,7 +45,7 @@ const Home = () => {
     return () =>{
       dispatch(clearCovidList())
     }
-  }, []);
+  }, [dispatch]);
 
   const handleClick = (country) => {
     let CountryDetail;
@@ -68,7 +66,7 @@ const Home = () => {
   };
   return (
     <>
-      <Header setCountry={setCountry}  />
+      {/* <Header setCountry={setCountry}  /> */}
       {loading && (
         <div className="d-flex flex-column align-items-center">
           <img src={loadingGif} alt="gif" width="50%" height="400px" />
