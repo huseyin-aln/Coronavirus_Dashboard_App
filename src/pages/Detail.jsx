@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "react-svg-map/lib/index.css";
 import Cards from "../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import CountryPieChart from "../components/charts/CountryPieChart";
 import WorldPieChart from "../components/charts/WorldPieChart";
+import axios from "axios";
+import { toastErrorNotify } from "../helpers/ToastNotify";
 
 const Detail = () => {
+  const [countryName, setCountryName] = useState([]);
+  const [countryFlag, setCountryFlag] = useState("");
+
   const { state } = useLocation();
   // console.log(state);
   const { covidList } = useSelector((state) => state.covid);
@@ -44,6 +49,26 @@ const Detail = () => {
 
   // const Turkey = covidList.find((item) => item.country === "Turkey");
   // console.log(Turkey);
+
+  const getCountryFlag = async () => {
+    const url = `https://restcountries.com/v3.1/all`;
+    try {
+      const { data } = await axios.get(url);
+      // console.log(data);
+      data.forEach((e) => {
+        const { common } = e.name;
+        setCountryName(common);
+      });
+
+      console.log(countryName);
+    } catch (err) {
+      toastErrorNotify(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getCountryFlag();
+  }, []);
 
   return (
     <div>

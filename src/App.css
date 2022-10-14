@@ -12,24 +12,30 @@ body {
   width: 100%;
   height: 100vh;
   stroke: #666;
-  
+
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .location {
-  fill: #232F3E;
+  fill: #232f3e;
   cursor: pointer;
 }
 
-.location:focus, .location:hover {
+.location:focus,
+.location:hover {
   fill: #b8e2b3;
   outline: 0;
 }
 
-.location[aria-checked=true] {
-  fill: #f4bc44; }
+.location[aria-checked="true"] {
+  fill: #f4bc44;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
 
 .App {
   text-align: center;
