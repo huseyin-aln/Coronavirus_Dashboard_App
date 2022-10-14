@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 import "react-svg-map/lib/index.css";
 import Cards from "../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import Pie from "../components/Pie";
-import WorldPie from "../components/WorldPie";
+import CountryPieChart from "../components/charts/CountryPieChart";
+import WorldPieChart from "../components/charts/WorldPieChart";
 
 const Detail = () => {
   const { state } = useLocation();
@@ -20,19 +20,28 @@ const Detail = () => {
   );
   const recovered = totalConfirmed - totalDeaths;
 
-  const worldTotalDeaths = covidList?.reduce((sum, item) => (sum += item.deaths), 0);
+  const worldTotalDeaths = covidList?.reduce(
+    (sum, item) => (sum += item.deaths),
+    0
+  );
   const worldTotalConfirmed = covidList?.reduce(
     (sum, item) => (sum += item.confirmed),
     0
   );
   const worldRecovered = worldTotalConfirmed - worldTotalDeaths;
 
-  const pieData = [{label: "Total Deaths", value: totalDeaths}, {label: "Recovered", value: recovered}]
+  const pieData = [
+    { label: "Total Deaths", value: totalDeaths },
+    { label: "Recovered", value: recovered },
+  ];
 
-  const worldPieData = [{label: "Total Deaths", value: worldTotalDeaths}, {label: "Recovered", value: worldRecovered}]
+  const worldPieData = [
+    { label: "Total Deaths", value: worldTotalDeaths },
+    { label: "Recovered", value: worldRecovered },
+  ];
 
   // console.log(pieData);
-  
+
   // const Turkey = covidList.find((item) => item.country === "Turkey");
   // console.log(Turkey);
 
@@ -44,12 +53,19 @@ const Detail = () => {
         </h1>
       )}
       {state?.length > 0 && (
-        <>
-        <Cards state={state} />
-        <Pie pieData={pieData} state={state}/>
-        <WorldPie worldPieData={worldPieData}/>
-        </>
+        <div className="d-flex justify-content-center align-items-center flex-wrap">
+          <Cards
+            state={state}
+            totalDeaths={totalDeaths}
+            totalConfirmed={totalConfirmed}
+            recovered={recovered}
+          />
+          <div className="w-80 mt-5">
+            <CountryPieChart pieData={pieData} state={state} />
+          </div>
+        </div>
       )}
+      <WorldPieChart worldPieData={worldPieData} />
     </div>
   );
 };
