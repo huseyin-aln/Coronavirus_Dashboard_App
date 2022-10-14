@@ -9,19 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCovidList, getCovidData } from "../features/covidSlice";
 
 const Home = () => {
-
-  const dispatch = useDispatch()
-  const {covidList, loading} = useSelector(state => state.covid)
-  const [country, setCountry] = useState("");
+  const dispatch = useDispatch();
+  const { covidList, loading } = useSelector((state) => state.covid);
+  // const [country, setCountry] = useState("");
 
   const navigate = useNavigate();
 
-
-
-
   // const [covid, setCovid] = useState([]);
   // const [loading, setLoading] = useState(false);
-
 
   // const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -42,9 +37,9 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getCovidData());
-    return () =>{
-      dispatch(clearCovidList())
-    }
+    // return () => {
+    //   dispatch(clearCovidList());
+    // };
   }, [dispatch]);
 
   const handleClick = (country) => {
@@ -61,7 +56,7 @@ const Home = () => {
         confirmed: 0,
       });
     }
-    setCountry(country);
+    // setCountry(country);
     navigate("/detail", { state: CountryDetail });
   };
   return (
