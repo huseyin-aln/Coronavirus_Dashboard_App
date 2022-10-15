@@ -14,14 +14,13 @@ const Detail = () => {
   const { covidList, loading } = useSelector((state) => state.covid);
 
   const totalDeaths = state?.reduce((sum, item) => (sum += item.deaths), 0);
-  console.log(totalDeaths);
-  
+
   const totalConfirmed = state?.reduce(
     (sum, item) => (sum += item.confirmed),
     0
   );
   const recovered = totalConfirmed - totalDeaths;
-console.log(recovered);
+
   const worldTotalDeaths = covidList?.reduce(
     (sum, item) => (sum += item.deaths),
     0
@@ -83,13 +82,14 @@ console.log(recovered);
 
           <div className="w-80 mt-5">
             {recovered === 0 && totalDeaths === 0 ? (
-              <h1 className="text-center text-success">No data to display </h1>
+              <h1 className="text-center text-primary">No data to display </h1>
             ) : (
               <CountryPieChart pieData={pieData} state={state} />
             )}
           </div>
         </div>
       )}
+
       <WorldPieChart worldPieData={worldPieData} />
       {loading && (
         <div className="d-flex flex-column align-items-center">

@@ -27,14 +27,15 @@ const Home = () => {
     let CountryDetail;
     if (country === "United States") {
       CountryDetail = covidList?.filter((item) => item.country === "US");
-    } else if (CountryDetail?.length === 0) {
+    } else {
+      CountryDetail = covidList?.filter((item) => item.country === country);
+    }
+    if (CountryDetail?.length === 0) {
       CountryDetail.push({
         country: "The Country Can Not Be Found!",
         deaths: 0,
         confirmed: 0,
       });
-    } else {
-      CountryDetail = covidList?.filter((item) => item.country === country);
     }
 
     navigate("/detail", { state: CountryDetail });
