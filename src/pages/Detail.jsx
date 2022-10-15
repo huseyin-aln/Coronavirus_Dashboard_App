@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "react-svg-map/lib/index.css";
 import Cards from "../components/Cards";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import CountryPieChart from "../components/charts/CountryPieChart";
 import WorldPieChart from "../components/charts/WorldPieChart";
-import axios from "axios";
-import { toastErrorNotify } from "../helpers/ToastNotify";
+import WorldColumnChart from "../components/charts/WorldColumnChart";
+import WorldDeathChart from "../components/charts/WorldDeathChart";
+import loadingGif from "../assets/loading.gif"
 
 const Detail = () => {
-  const [countryName, setCountryName] = useState([]);
-  const [countryFlag, setCountryFlag] = useState("");
-
   const { state } = useLocation();
   // console.log(state);
-  const { covidList } = useSelector((state) => state.covid);
+  const { covidList, loading } = useSelector((state) => state.covid);
 
   // console.log(covidList);
 
@@ -39,41 +36,46 @@ const Detail = () => {
     { label: "Total Deaths", value: totalDeaths },
     { label: "Recovered", value: recovered },
   ];
+  // console.log(pieData);
+  
 
   const worldPieData = [
     { label: "Total Deaths", value: worldTotalDeaths },
     { label: "Recovered", value: worldRecovered },
   ];
+  // confirmed sayısı
+  const countriesData = covidList?.reduce((total, item) => {
+    total[item.country] = { label: item.country, value: item.confirmed };
+    return total;
+  }, {});
+  // console.log(stars)
+  const worldColumnData = Object.values(countriesData)
+    .sort((a, b) => {
+      return b.value - a.value;
+    })
+    .slice(0, 5);
+
+  // ölüm sayısı
+  const countriesDeathData = covidList?.reduce((total, item) => {
+    total[item.country] = { label: item.country, value: item.deaths };
+    return total;
+  }, {});
+  // console.log(stars)
+  const worldDeathData = Object.values(countriesDeathData)
+    .sort((a, b) => {
+      return b.value - a.value;
+    })
+    .slice(0, 5);
 
   // console.log(pieData);
 
   // const Turkey = covidList.find((item) => item.country === "Turkey");
   // console.log(Turkey);
 
-  const getCountryFlag = async () => {
-    const url = `https://restcountries.com/v3.1/all`;
-    try {
-      const { data } = await axios.get(url);
-      // console.log(data);
-      data.forEach((e) => {
-        const { common } = e.name;
-        setCountryName(common);
-      });
-
-      console.log(countryName);
-    } catch (err) {
-      toastErrorNotify(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getCountryFlag();
-  }, []);
-
   return (
     <div>
       {!state && (
-        <h1 className="text-center text-danger m-auto">
+        <h1 className="text-center text-danger m-5">
           Please select a country to see data
         </h1>
       )}
@@ -85,12 +87,33 @@ const Detail = () => {
             totalConfirmed={totalConfirmed}
             recovered={recovered}
           />
+          
           <div className="w-80 mt-5">
-            <CountryPieChart pieData={pieData} state={state} />
+            {
+              recovered === 0 && totalDeaths === 0 ? (
+                <h1 className="text-center text-success">No data to display </h1>
+              ) : (
+                 <CountryPieChart pieData={pieData} state={state} />
+              )
+            }
+           
           </div>
         </div>
       )}
       <WorldPieChart worldPieData={worldPieData} />
+      {loading && (
+        <div className="d-flex flex-column align-items-center">
+          <img src={loadingGif} alt="gif" width="50%" height="400px" />
+          <h1 className="text-center">Loading...</h1>
+        </div>
+      )}
+      {!loading && (
+        <div className="d-flex justify-content-center flex-wrap" >
+        <WorldColumnChart worldColumnData={worldColumnData} />
+        <WorldDeathChart worldDeathData={worldDeathData} />
+      </div>
+      )}
+      
     </div>
   );
 };

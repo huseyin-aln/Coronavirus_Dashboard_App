@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function NavbarTop() {
   const dispatch = useDispatch();
-  const { covidList, loading } = useSelector((state) => state.covid);
+  const { covidList } = useSelector((state) => state.covid);
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ function NavbarTop() {
     e.preventDefault();
     let CountryDetail;
 
-    if (searchCountry === "United States") {
+    if (searchCountry === "United States" || searchCountry === "Us" || searchCountry === "Usa") {
       CountryDetail = covidList.filter((item) => item.country === "US");
     } else if (CountryDetail?.length === 0) {
       CountryDetail.push({
@@ -40,7 +40,7 @@ function NavbarTop() {
         (item) => item.country === searchCountry
       );
     }
-
+console.log(searchCountry);
     setSearchCountry("");
     navigate("/detail", { state: CountryDetail });
   };
@@ -65,12 +65,17 @@ function NavbarTop() {
             </Link>
             <form className="d-flex" role="search" onSubmit={handleSubmit}>
               <input
-                className="form-control me-2"
+                className="text-capitalize form-control me-2"
                 type="search"
                 value={searchCountry}
-                placeholder="Search"
+                placeholder="Search Country"
                 aria-label="Search"
-                onChange={(e) => setSearchCountry(e.target.value)}
+                onChange={(e) =>
+                  setSearchCountry(
+                    e.target.value[0].toUpperCase() +
+                      e.target.value.slice(1).toLowerCase()
+                  )
+                }
               />
               <button className="btn btn-outline-success" type="submit">
                 Search

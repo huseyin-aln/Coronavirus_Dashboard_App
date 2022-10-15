@@ -3,21 +3,16 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
+
 function Cards({ state, totalConfirmed, totalDeaths, recovered }) {
   // console.log(state);
+ 
   const navigate = useNavigate();
-
-  // const totalDeaths = state.reduce((sum, item) => (sum += item.deaths), 0);
-  // const totalConfirmed = state.reduce(
-  //   (sum, item) => (sum += item.confirmed),
-  //   0
-  // );
-  // const recovered = totalConfirmed - totalDeaths;
 
   return (
     <div className="d-flex justify-content-center m-5">
-      <Card className="text-center" style={{ width: "100%" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card className="text-center" style={{ width: "20rem" }}>
+        <Card.Img className="w-25 d-block m-auto" variant="top" />
 
         <Card.Body className="fs-5">
           <Card.Title className="fs-2 text-danger">

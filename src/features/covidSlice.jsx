@@ -20,6 +20,7 @@ export const getCovidData = createAsyncThunk(
       return data.data.covid19Stats;
     } catch (err) {
       toastErrorNotify(err.message);
+      console.log(err);
     }
   }
 );

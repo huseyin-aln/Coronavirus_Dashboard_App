@@ -2,11 +2,10 @@ import React from "react";
 import world from "@svg-maps/world";
 import { SVGMap } from "react-svg-map";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import loadingGif from "../assets/loading.gif";
-import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCovidList, getCovidData } from "../features/covidSlice";
+import { getCovidData } from "../features/covidSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -37,9 +36,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getCovidData());
-    // return () => {
-    //   dispatch(clearCovidList());
-    // };
   }, [dispatch]);
 
   const handleClick = (country) => {
@@ -61,7 +57,7 @@ const Home = () => {
   };
   return (
     <>
-      {/* <Header setCountry={setCountry}  /> */}
+     
       {loading && (
         <div className="d-flex flex-column align-items-center">
           <img src={loadingGif} alt="gif" width="50%" height="400px" />
