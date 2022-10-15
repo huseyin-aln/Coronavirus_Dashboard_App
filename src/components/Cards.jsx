@@ -3,10 +3,7 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
-
 function Cards({ state, totalConfirmed, totalDeaths, recovered }) {
-  // console.log(state);
- 
   const navigate = useNavigate();
 
   return (
@@ -18,7 +15,7 @@ function Cards({ state, totalConfirmed, totalDeaths, recovered }) {
           <Card.Title className="fs-2 text-danger">
             Country : {state[0].country}
           </Card.Title>
-          <Card.Text >
+          <Card.Text>
             Total Confirmed :
             <span className="text-danger">{totalConfirmed}</span>
           </Card.Text>

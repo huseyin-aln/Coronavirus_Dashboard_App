@@ -6,7 +6,7 @@ ReactFC.fcRoot(FusionCharts, ColumnChart);
 const WorldColumnChart = ({ worldColumnData }) => {
   const chartConfigs = {
     type: "bar3d",
-    width: "50%",
+    width: "100%",
     height: "350",
     dataFormat: "json",
     dataSource: {

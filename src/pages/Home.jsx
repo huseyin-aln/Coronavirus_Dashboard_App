@@ -6,61 +6,50 @@ import { useEffect } from "react";
 import loadingGif from "../assets/loading.gif";
 import { useDispatch, useSelector } from "react-redux";
 import { getCovidData } from "../features/covidSlice";
+import { toastErrorNotify } from "../helpers/ToastNotify";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { covidList, loading } = useSelector((state) => state.covid);
-  // const [country, setCountry] = useState("");
 
   const navigate = useNavigate();
 
-  // const [covid, setCovid] = useState([]);
-  // const [loading, setLoading] = useState(false);
-
-  // const API_KEY = process.env.REACT_APP_API_KEY;
-
-  // const url = `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats/?rapidapi-key=${API_KEY}#downloadJSON=true`;
-
-  // const getCovidData = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const { data } = await axios.get(url);
-  //     setCovid(data.data.covid19Stats);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // console.log(covid);
-
   useEffect(() => {
-    dispatch(getCovidData());
+    dispatch(getCovidData()).then((res) => {
+      // api den hata döndüğünde toastify ı çalıştıran function
+      if (res.payload?.name === "AxiosError") {
+        toastErrorNotify("Something went wrong");
+      }
+    });
   }, [dispatch]);
 
   const handleClick = (country) => {
     let CountryDetail;
     if (country === "United States") {
-      CountryDetail = covidList.filter((item) => item.country === "US");
-    } else {
-      CountryDetail = covidList.filter((item) => item.country === country);
-    }
-    if (CountryDetail.length === 0) {
+      CountryDetail = covidList?.filter((item) => item.country === "US");
+    } else if (CountryDetail?.length === 0) {
       CountryDetail.push({
         country: "The Country Can Not Be Found!",
         deaths: 0,
         confirmed: 0,
       });
+    } else {
+      CountryDetail = covidList?.filter((item) => item.country === country);
     }
-    // setCountry(country);
+
     navigate("/detail", { state: CountryDetail });
   };
   return (
     <>
-     
       {loading && (
         <div className="d-flex flex-column align-items-center">
-          <img src={loadingGif} alt="gif" width="50%" height="400px" />
+          <img
+            className="loadingGif"
+            src={loadingGif}
+            alt="gif"
+            width="50%"
+            height="400px"
+          />
           <h1 className="text-center">Loading...</h1>
         </div>
       )}
@@ -71,7 +60,6 @@ const Home = () => {
             locationClassName="location"
             map={world}
             onLocationClick={(e) => {
-              // console.log(e.target.getAttribute("name"));
               handleClick(e.target.getAttribute("name"));
             }}
           />

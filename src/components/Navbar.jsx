@@ -27,7 +27,11 @@ function NavbarTop() {
     e.preventDefault();
     let CountryDetail;
 
-    if (searchCountry === "United States" || searchCountry === "Us" || searchCountry === "Usa") {
+    if (
+      searchCountry === "United States" ||
+      searchCountry === "Us" ||
+      searchCountry === "Usa"
+    ) {
       CountryDetail = covidList.filter((item) => item.country === "US");
     } else if (CountryDetail?.length === 0) {
       CountryDetail.push({
@@ -40,7 +44,7 @@ function NavbarTop() {
         (item) => item.country === searchCountry
       );
     }
-console.log(searchCountry);
+    console.log(searchCountry);
     setSearchCountry("");
     navigate("/detail", { state: CountryDetail });
   };
@@ -49,8 +53,10 @@ console.log(searchCountry);
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link to="/" className="nav-link active cursor-pointer d-flex gap-3">
-          <i className="text-white">{"<h-aln>"}</i>
-          <span className="text-success">Coronavirus Dashboard</span>
+          <i className="text-white coronaHeader">{"<h-aln>"}</i>
+          <span className="text-success coronaHeader">
+            Coronavirus Dashboard
+          </span>
         </Link>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -68,7 +74,7 @@ console.log(searchCountry);
                 className="text-capitalize form-control me-2"
                 type="search"
                 value={searchCountry}
-                placeholder="Search Country"
+                placeholder="Search Country..."
                 aria-label="Search"
                 onChange={(e) =>
                   setSearchCountry(

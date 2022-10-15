@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toastErrorNotify } from "../helpers/ToastNotify";
+
 
 const initialState = {
   covidList: [],
@@ -19,11 +19,9 @@ export const getCovidData = createAsyncThunk(
       const { data } = await axios.get(url);
       return data.data.covid19Stats;
     } catch (err) {
-      toastErrorNotify(err.message);
-      console.log(err);
-    }
+      return err;
   }
-);
+});
 
 const covidSlice = createSlice({
   name: "covid",

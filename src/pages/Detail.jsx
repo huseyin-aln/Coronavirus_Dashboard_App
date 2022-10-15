@@ -1,19 +1,17 @@
 import { useLocation } from "react-router-dom";
 import "react-svg-map/lib/index.css";
 import Cards from "../components/Cards";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import CountryPieChart from "../components/charts/CountryPieChart";
 import WorldPieChart from "../components/charts/WorldPieChart";
 import WorldColumnChart from "../components/charts/WorldColumnChart";
 import WorldDeathChart from "../components/charts/WorldDeathChart";
-import loadingGif from "../assets/loading.gif"
+import loadingGif from "../assets/loading.gif";
+import { Container, Col } from "react-bootstrap";
 
 const Detail = () => {
   const { state } = useLocation();
-  // console.log(state);
   const { covidList, loading } = useSelector((state) => state.covid);
-
-  // console.log(covidList);
 
   const totalDeaths = state?.reduce((sum, item) => (sum += item.deaths), 0);
   const totalConfirmed = state?.reduce(
@@ -36,8 +34,6 @@ const Detail = () => {
     { label: "Total Deaths", value: totalDeaths },
     { label: "Recovered", value: recovered },
   ];
-  // console.log(pieData);
-  
 
   const worldPieData = [
     { label: "Total Deaths", value: worldTotalDeaths },
@@ -48,7 +44,7 @@ const Detail = () => {
     total[item.country] = { label: item.country, value: item.confirmed };
     return total;
   }, {});
-  // console.log(stars)
+
   const worldColumnData = Object.values(countriesData)
     .sort((a, b) => {
       return b.value - a.value;
@@ -60,17 +56,12 @@ const Detail = () => {
     total[item.country] = { label: item.country, value: item.deaths };
     return total;
   }, {});
-  // console.log(stars)
+
   const worldDeathData = Object.values(countriesDeathData)
     .sort((a, b) => {
       return b.value - a.value;
     })
     .slice(0, 5);
-
-  // console.log(pieData);
-
-  // const Turkey = covidList.find((item) => item.country === "Turkey");
-  // console.log(Turkey);
 
   return (
     <div>
@@ -87,16 +78,13 @@ const Detail = () => {
             totalConfirmed={totalConfirmed}
             recovered={recovered}
           />
-          
+
           <div className="w-80 mt-5">
-            {
-              recovered === 0 && totalDeaths === 0 ? (
-                <h1 className="text-center text-success">No data to display </h1>
-              ) : (
-                 <CountryPieChart pieData={pieData} state={state} />
-              )
-            }
-           
+            {recovered === 0 && totalDeaths === 0 ? (
+              <h1 className="text-center text-success">No data to display </h1>
+            ) : (
+              <CountryPieChart pieData={pieData} state={state} />
+            )}
           </div>
         </div>
       )}
@@ -108,12 +96,15 @@ const Detail = () => {
         </div>
       )}
       {!loading && (
-        <div className="d-flex justify-content-center flex-wrap" >
-        <WorldColumnChart worldColumnData={worldColumnData} />
-        <WorldDeathChart worldDeathData={worldDeathData} />
-      </div>
+        <Container fluid className="d-flex justify-content-center flex-wrap">
+          <Col xs={12} md={6}>
+            <WorldColumnChart worldColumnData={worldColumnData} />
+          </Col>
+          <Col xs={12} md={6}>
+            <WorldDeathChart worldDeathData={worldDeathData} />
+          </Col>
+        </Container>
       )}
-      
     </div>
   );
 };
