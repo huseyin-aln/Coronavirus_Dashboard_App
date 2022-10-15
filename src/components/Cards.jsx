@@ -31,7 +31,7 @@ function Cards({ state, totalConfirmed, totalDeaths, recovered }) {
               {moment(state[0].lastUpdate).format("dddd Do, YYYY")}
             </span>
           </Card.Text>
-          <Button variant="success" onClick={() => navigate("/")}>
+          <Button variant="primary" onClick={() => navigate("/")}>
             Go Back
           </Button>
         </Card.Body>

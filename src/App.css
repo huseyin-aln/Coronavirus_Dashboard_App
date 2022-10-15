@@ -37,6 +37,10 @@ body {
   cursor: pointer;
 }
 
+.footer {
+  margin-top: 2rem !important;
+}
+
 @media only screen and (max-width: 768px) {
   .loadingGif {
     width: 100%;

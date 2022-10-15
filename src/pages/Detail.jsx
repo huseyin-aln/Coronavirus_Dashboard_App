@@ -14,12 +14,14 @@ const Detail = () => {
   const { covidList, loading } = useSelector((state) => state.covid);
 
   const totalDeaths = state?.reduce((sum, item) => (sum += item.deaths), 0);
+  console.log(totalDeaths);
+  
   const totalConfirmed = state?.reduce(
     (sum, item) => (sum += item.confirmed),
     0
   );
   const recovered = totalConfirmed - totalDeaths;
-
+console.log(recovered);
   const worldTotalDeaths = covidList?.reduce(
     (sum, item) => (sum += item.deaths),
     0

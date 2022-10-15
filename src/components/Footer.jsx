@@ -3,12 +3,12 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="container">
+    <div className="container footer">
       <footer className="w-100 " style={{ height: "20px" }}>
         <div className="container w-80 h-100 d-flex flex-column justify-content-center align-items-center">
           <div className="d-flex gap-3">
-            <div className="fs-2 cursor-pointer">
-              <a href="https://github.com/huseyin-aln">
+            <div className="fs-2 cursor-pointer" id="user-github">
+              <a href="https://github.com/huseyin-aln"  >
                 <FaGithub color="black" />
               </a>
             </div>

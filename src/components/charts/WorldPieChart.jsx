@@ -19,7 +19,7 @@ const WorldPieChart = ({ worldPieData }) => {
         baseFontColor: "#3289da",
         smartLineColor: "#3289da",
         paletteColors:
-          "#f71212, #27a16e, #ecae10, #F2726F,  #35e91d, #6E80CA ,#8d6e63,",
+          "#f71212, #0B5ED7, #ecae10, #F2726F,  #35e91d, #6E80CA ,#8d6e63,",
         use3DLighting: 1,
         useDataPlotColorForLabels: 1,
         decimals: 0,

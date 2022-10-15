@@ -50,23 +50,29 @@ function NavbarTop() {
   };
   // console.log(covidList);
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      className="navbarContainer"
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+    >
       <Container>
         <Link to="/" className="nav-link active cursor-pointer d-flex gap-3">
           <i className="text-white coronaHeader">{"<h-aln>"}</i>
-          <span className="text-success coronaHeader">
+          <span className="text-primary coronaHeader">
             Coronavirus Dashboard
           </span>
         </Link>
 
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Toggle className="toggle" aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse className="menu" id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Link to="/" className="nav-link active cursor-pointer">
+            <Link to="/" className="home nav-link active cursor-pointer">
               Home
             </Link>
 
-            <Link to="detail" className="nav-link active cursor-pointer">
+            <Link to="detail" className="detail nav-link active cursor-pointer">
               Detail
             </Link>
             <form className="d-flex" role="search" onSubmit={handleSubmit}>
@@ -83,7 +89,7 @@ function NavbarTop() {
                   )
                 }
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-primary" type="submit">
                 Search
               </button>
             </form>
