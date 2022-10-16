@@ -1,5 +1,6 @@
 <h1 align="center">Coronavirus Dashboard App</h1>
 
+https://coronavirus-dashboard-app.netlify.app/
 
 <!-- TABLE OF CONTENTS -->
 
