@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getCovidData()).then((res) => {
-      // api den hata döndüğünde toastify ı çalıştıran function
+      //? The function that runs toastify when an error is returned from api.
       if (res.payload?.name === "AxiosError") {
         toastErrorNotify("Something went wrong");
       }
@@ -25,11 +25,14 @@ const Home = () => {
 
   const handleClick = (country) => {
     let CountryDetail;
+    //? The function that converts the United States data from the map to US in order to get data from the API when clicked on it.
     if (country === "United States") {
       CountryDetail = covidList?.filter((item) => item.country === "US");
     } else {
+      //? The function that allows the data of that country to come from the api when clicked on the map.
       CountryDetail = covidList?.filter((item) => item.country === country);
     }
+    //? The function that allows the user to be properly informed if there is no data for that country when clicked on the map.
     if (CountryDetail?.length === 0) {
       CountryDetail.push({
         country: "The Country Can Not Be Found!",

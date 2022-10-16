@@ -13,22 +13,31 @@ const Detail = () => {
   const { state } = useLocation();
   const { covidList, loading } = useSelector((state) => state.covid);
 
+  //? The function that finds the total number of deaths by adding the number of deaths from the states and cities of the country.
   const totalDeaths = state?.reduce((sum, item) => (sum += item.deaths), 0);
 
+  //? The function that finds the total number of cases by adding the number of cases belonging to the states and cities of the country.
   const totalConfirmed = state?.reduce(
     (sum, item) => (sum += item.confirmed),
     0
   );
+
+  //? The function that finds the country's recoveries by subtracting the total number of cases from the total number of deaths.
   const recovered = totalConfirmed - totalDeaths;
 
+  //? The function that finds the number of deaths in the whole world by adding the death numbers of countries.
   const worldTotalDeaths = covidList?.reduce(
     (sum, item) => (sum += item.deaths),
     0
   );
+
+  //? The function that finds the number of cases in the whole world by adding the number of cases of countries.
   const worldTotalConfirmed = covidList?.reduce(
     (sum, item) => (sum += item.confirmed),
     0
   );
+
+  //? The function that finds the total number of recovered in the whole world by subtracting the number of deaths from the number of confirmed in the world.
   const worldRecovered = worldTotalConfirmed - worldTotalDeaths;
 
   const pieData = [
@@ -40,7 +49,8 @@ const Detail = () => {
     { label: "Total Deaths", value: worldTotalDeaths },
     { label: "Recovered", value: worldRecovered },
   ];
-  // confirmed sayısı
+
+  //? The function that finds the top 5 countries with the highest number of confirmed in the world.
   const countriesData = covidList?.reduce((total, item) => {
     total[item.country] = { label: item.country, value: item.confirmed };
     return total;
@@ -52,7 +62,7 @@ const Detail = () => {
     })
     .slice(0, 5);
 
-  // ölüm sayısı
+  //? The function that finds the top 5 countries with the highest number of deaths in the world.
   const countriesDeathData = covidList?.reduce((total, item) => {
     total[item.country] = { label: item.country, value: item.deaths };
     return total;
