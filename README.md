@@ -34,7 +34,6 @@
 - CSS
 - JS
 - REACT
-- Django
 
 ## How To Use
 
@@ -74,10 +73,6 @@ information for the relevant country are displayed on another page.
 - Responsive design is provided on the compatibility side.
 
 ## Contact
-
-- GitHub [[https://{github.com/huseyin-aln}](https://github.com/huseyin-aln))
-
-- Linkedin [https://www.linkedin.com/in/hüseyin-arslan444/)
 
 - GitHub [@huseyin-aln](https://{github.com/huseyin-aln})
 
