@@ -3,13 +3,11 @@
 <div align="center">
   <h3>
     <a href="https://coronavirus-dashboard-app.netlify.app/">
-      Project
+      Coronavirus Dashboard App
     </a>
  
   </h3>
 </div>
-
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -31,8 +29,6 @@
 
 
 ### Built With
-
-
 
 - HTML
 - CSS
@@ -65,11 +61,6 @@ $ git clone https://https://github.com/huseyin-aln/Coronavirus_Dashboard_App
     "react-svg-map": "^2.2.0",
     "react-toastify": "^9.0.8",
     "redux": "^4.2.0",
-
-# Add .env file
-
-# Run the app
-    
 ```
 
 ## Acknowledgements
@@ -84,7 +75,10 @@ information for the relevant country are displayed on another page.
 
 ## Contact
 
-
 - GitHub [[https://{github.com/huseyin-aln}](https://github.com/huseyin-aln))
 
 - Linkedin [https://www.linkedin.com/in/hüseyin-arslan444/)
+
+- GitHub [@huseyin-aln](https://{github.com/huseyin-aln})
+
+- Linkedin [@hüseyin-arslan444](https://{linkedin.com/hüseyin-arslan444})
