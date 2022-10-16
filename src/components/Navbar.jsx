@@ -26,19 +26,19 @@ function NavbarTop() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let CountryDetail;
+    const countryInput =
+      searchCountry[0].toUpperCase() + searchCountry.slice(1).toLowerCase();
 
     //? The function that converts United States data from input to US to get data from API.
     if (
-      searchCountry === "United States" ||
-      searchCountry === "Us" ||
-      searchCountry === "Usa"
+      countryInput === "United States" ||
+      countryInput === "Us" ||
+      countryInput === "Usa"
     ) {
       CountryDetail = covidList.filter((item) => item.country === "US");
     } else {
       //? The function that allows the country data from the input to come from the API.
-      CountryDetail = covidList.filter(
-        (item) => item.country === searchCountry
-      );
+      CountryDetail = covidList.filter((item) => item.country === countryInput);
     }
     //? The function that allows the user to be properly informed if the data of the country entered in the input is not available in the API.
     if (CountryDetail?.length === 0) {
@@ -88,12 +88,7 @@ function NavbarTop() {
                 value={searchCountry}
                 placeholder="Search Country..."
                 aria-label="Search"
-                onChange={(e) =>
-                  setSearchCountry(
-                    e.target.value[0].toUpperCase() +
-                      e.target.value.slice(1).toLowerCase()
-                  )
-                }
+                onChange={(e) => setSearchCountry(e.target.value)}
               />
               <button className="btn btn-outline-primary" type="submit">
                 Search
