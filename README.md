@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+<h1 align="center">Coronavirus Dashboard App</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Overview](#overview)
+- [Built With](#built-with)
+- [Features](#features)
+- [How to use](#how-to-use)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- OVERVIEW -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+![Coronavirus-Dashboard-App](https://user-images.githubusercontent.com/101873227/196030704-48ed0a75-cbea-467c-8401-b5a79925ca34.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTML
+- CSS
+- JS
+- REACT
+- Django
 
-### `npm run eject`
+## How To Use
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To clone and run this application, you'll need [Git](https://git-scm.com) 
+```bash
+# Clone this repository
+$ git clone https://https://github.com/huseyin-aln/Coronavirus_Dashboard_App
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Install dependencies
+   "@reduxjs/toolkit": "^1.8.6",
+    "@svg-maps/world": "^1.0.1",
+    "axios": "^1.1.2",
+    "bootstrap": "^5.2.2",
+    "cypress": "^10.10.0",
+    "fusioncharts": "^3.19.0",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "^18.2.0",
+    "react-fusioncharts": "^4.0.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
+    "react-svg-map": "^2.2.0",
+    "react-toastify": "^9.0.8",
+    "redux": "^4.2.0",
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Add .env file
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Run the app
+    
+```
 
-## Learn More
+## Acknowledgements
+- This project is built using React and "rapidapi.com/KishCom/api/covid-19-coronavirus-statistics/" API.
+- When the relevant country is clicked on a world map, the number of confirmed cases of covid 19, the number of deaths and recoveries, and the updated date 
+information for the relevant country are displayed on another page.
+- The name of the relevant country is entered into the input on the main page, and the data of that country comes on a different page.
+- Loader is used in waiting for data from API.
+- In cases where the relevant country data cannot be obtained from the API, the user is informed.
+- Some unit tests have been written for Navbar and Footer components using the cypress library.
+- Responsive design is provided on the compatibility side.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+- GitHub [[https://{github.com/huseyin-aln}](https://github.com/huseyin-aln))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Linkedin [https://www.linkedin.com/in/hüseyin-arslan444/)
