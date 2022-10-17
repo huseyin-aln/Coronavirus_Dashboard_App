@@ -35,6 +35,10 @@
 - JS
 - REACT
 
+## Feaures
+
+The data taken from the api was used by transferring it to the global state with the redux toolkit.
+
 ## How To Use
 
 To clone and run this application, you'll need [Git](https://git-scm.com) 
