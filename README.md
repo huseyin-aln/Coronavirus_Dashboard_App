@@ -35,7 +35,7 @@
 - JS
 - REACT
 
-## Feaures
+## Features
 
 The data taken from the api was used by transferring it to the global state with the redux toolkit.
 
