@@ -47,6 +47,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com)
 $ git clone https://https://github.com/huseyin-aln/Coronavirus_Dashboard_App
 
 # Install dependencies
+
    "@reduxjs/toolkit": "^1.8.6",
     "@svg-maps/world": "^1.0.1",
     "axios": "^1.1.2",
@@ -67,6 +68,7 @@ $ git clone https://https://github.com/huseyin-aln/Coronavirus_Dashboard_App
 ```
 
 ## Acknowledgements
+
 - This project is built using React and "rapidapi.com/KishCom/api/covid-19-coronavirus-statistics/" API.
 - When the relevant country is clicked on a world map, the number of confirmed cases of covid 19, the number of deaths and recoveries, and the updated date 
 information for the relevant country are displayed on another page.
